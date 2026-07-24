@@ -988,12 +988,11 @@ async function uploadBlobToPixhost(blob: Blob, mime: string, fileName?: string) 
 }
 
 async function callTextImage(payload: NormalizedPayload | WorkflowPayload, signal: AbortSignal) {
-  const body: { model: string; prompt: string; n: number; response_format: string; size?: string } = {
-    model: payload.model,
-    prompt: payload.prompt,
-    n: 1,
-    response_format: 'b64_json',
-  }
+  const body: { model: string; prompt: string; n: number; size?: string } = {
+  model: payload.model,
+  prompt: payload.prompt,
+  n: 1,
+}
   if (payload.size !== '自动') body.size = payload.size
   return fetch(buildUpstreamUrl(payload.baseUrl, 'images/generations'), {
     method: 'POST',
