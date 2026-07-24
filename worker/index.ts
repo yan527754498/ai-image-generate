@@ -1009,7 +1009,6 @@ async function callImageEdit(payload: NormalizedPayload | WorkflowPayload, signa
   form.append('prompt', payload.prompt)
   if (payload.size !== '自动') form.append('size', payload.size)
   form.append('n', '1')
-  form.append('response_format', 'b64_json')
   for (let index = 0; index < payload.inputImages.length; index += 1) {
     const inputImage = payload.inputImages[index]
     const { blob, mime } = await inputImageToBlob(inputImage, signal)
